@@ -1,14 +1,17 @@
 import random
 
 class Postavy:
-    def __init__(self, jmeno, cech):
+    def __init__(self, jmeno, cech, mince=0):
         self.jmeno = jmeno
         self.cech = cech
+        self.mince = mince
 
     def informace(self):
-        print("\nJméno postavy:", self.jmeno, "\nČlenem cechu:", self.cech + "ů")
+        print("\nJméno postavy:", self.jmeno, "\nČlenem cechu:", self.cech + "ů \nPočet mincí:", self.mince)
 
 seznam_cechu = {1: "Válečník", 2: "Kouzelník", 3: "Zloděj"}
+seznam_zbrani = {1: "větev", 2: "dvouruční sekera", 3: "kouzelnická hůl", 4: "dýka"}
+mince_hrace = 0
 
 jmeno_hrace = input("Vítej ve hře na hrdiny. Jak se jmenuješ?\n")
 print("\nVýborně, od teď budeš znám jako", jmeno_hrace)
@@ -28,8 +31,22 @@ while True:
         print("Zadej číselnou hodnotu!")
         continue
 
-hlavni_hrdina = Postavy(jmeno_hrace, cech_hrace)
+hlavni_hrdina = Postavy(jmeno_hrace, cech_hrace, mince_hrace)
 
+if cech_hrace == seznam_cechu[1]:
+    osloveni = "válečníku"
+elif cech_hrace == seznam_cechu[2]:
+    osloveni = "čaroději"
+else:
+    osloveni = "zloději"
 
+if cech_hrace == seznam_cechu[1]:
+    zakladna = "aréně"
+elif cech_hrace == seznam_cechu[2]:
+    zakladna = "akademii"
+else:
+    zakladna = "krčmě"
+
+print("Vítej v", zakladna, osloveni)
 
 
